@@ -1,5 +1,5 @@
 ---
-
+const pageTitle = "博客集锦"
 ---
 
 <html lang="en">
@@ -8,17 +8,19 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-        <body>
-            <a href = "/">首页</a>
-            <a href="/about/">关于</a>
-            <a href="/blog/">博客</a>
-            <h1>用来存储博客文章的总界面</h1>
-            <p>这是第一篇博客</p>
-            <ul>
-                <li><a href="/posts/post-1/">文章1</a></li>
-                <li><a href="/posts/post-2/">文章2</a></li>
-                <li><a href="/posts/post-3/">文章3</a></li>
-            </ul>    
-        </body>
+        <title>{pageTitle}</title>
     </head>
+    <body>
+        <a href = "/">首页</a>
+        <a href="/about/">关于</a>
+        <a href="/blog/">博客</a>
+        <h1>{pageTitle}</h1>
+        <h1>用来存储博客文章的总界面</h1>
+        <p>这是第一篇博客</p>
+        <ul>
+            <li><a href="/posts/post-1/">文章1</a></li>
+            <li><a href="/posts/post-2/">文章2</a></li>
+            <li><a href="/posts/post-3/">文章3</a></li>
+        </ul>    
+    </body>
 </html>
