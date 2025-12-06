@@ -1,5 +1,18 @@
 ---
 const pageTitle = "关于我";
+const identity = {
+	nickname: ["paradoxci", "阿柴"],
+	country: "China",
+	occupation: "大学生",
+	hobbies: ["听歌", "各种手工", "编程", "明日方舟", "术力口"]
+}
+
+const skills = ["CSS", "HTML", "JavaScript", "Python", "C", "Astro"]
+
+/*用于条件渲染，或者说选择性渲染html元素*/ 
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -7,11 +20,24 @@ const pageTitle = "关于我";
     	<meta charset ="utf-8" />
     	<meta name="viewport" content="width=device-width" />
 		<title>{pageTitle}</title>
+		<style>
+			h1{
+				color: purple;
+				font-size: 4rem;
+			}
+			.skill{
+				color: green;
+				font-size: bold;
+			}
+			/*此处的.表示类选择器，也就是说.后面的内容是css语言中写在html标签属性里的类，比如我们这里把标签li内部的class设置为了skill，也就表示在css语言层面上skill现在是一个css类，在style里统筹这些内容的时候把skill用.标记为类方便css查找*/
+			/*bold表示加粗*/
+		</style>
    	</head>
 	<body>
         <a href="/">首页</a>
         <a href="/blog/">博客</a>
         <a href="/about/">关于</a>
+		<a href="/special/">？？？</a>
 		<h1>{pageTitle}</h1>
         <h3>类似我了终于到写代码了，虽然写代码也不容易就是了...</h3>
         <h2>有一种我不管在这里写下什么东西，未来都会变成黑历史的预感，但是无所谓了我黑历史还少吗（）</h2>
@@ -19,5 +45,22 @@ const pageTitle = "关于我";
         <p>怎么样都好啦，如果真的能做出什么东西来的话倒是无所谓，就是感觉自己在这里花的时间以后并不能写到简历上，所以总是感觉有点焦急，我希望自己能学的快一点，多一点，能尽快把它们变现就好了</p>
         <p>超级功利的想法，但是没有任何办法，在我身上学术精神也好热爱也好，如果不能快速转化为立身之本的话，这辈子就要去啃老了吧，所以功利也无所谓，任何美好的理想等我有资本了再说</p>
         <p>扯远了，这一页就写这么多吧</p>
+		<p>按照教程现在的要求，我现在要在这里做自我介绍，说起来做自我介绍对我来说是相当难为情的事情，因为我没有什么拿得出手的出众才能，出身也普通，要是有比我优秀闪耀个十几倍的人在我之前做了自我介绍，那我还不如当场从楼上跳下去（开个玩笑）</p>
+		<p>特别是介绍个人爱好吧，我不知道为什么我认识的人里会有人能做到即使是小众的爱好也能描述的很有魅力，我因为做不到这一点，感觉自己小众的爱好格外羞耻，故而基本避而不谈，不过下现在只有我在这个网站里自言自语，所以倒也无所谓了啦</p>
+		<ul>
+			<li>我在网上常用的网民是{identity.nickname[0]}，或者{identity.nickname[1]}，在此基础上只要不带侮辱性，延申出去叫我什么都可以，柴，帕拉等等都是可以的</li>
+			<li>我出生在{identity.country}，目前是什么工作也没有的{identity.occupation}。</li>
+			{identity.hobbies.length >= 2 
+			&& <li>我的其中两个爱好是{identity.hobbies[0]}，{identity.hobbies[1]}</li>
+			}
+		</ul>
+		<p>我的技能包括</p>
+		<ul>
+			{skills.map((skill) => <li class = "skill">{skill}</li>)} <!--注意这里的<li>标签本身就是显示输出的意思，所以这里不需要额外的输出函数，就能完成map遍历skills中的每个元素并且将skills中的每个元素视为skill，=>用于接收数组中的每个元素并且作为参数，对于每个skill，输出一个<li>标签，标签内容就是每个skill-->
+		</ul>
+
+		{happy && <p>我现在很开心</p>}
+		{finished && <p>我完成了astro的所有课程</p>}
+		{goal== 3 ? <p>我的目标是在3天内完成（是教程让我这么说的不是我这么说的）</p>: <p>我的目标是在三天以上的时间内完成</p>}
 	</body>
 </html>
